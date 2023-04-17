@@ -1,0 +1,94 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Service</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            
+            <li class="breadcrumb-item"><a routerLink="/fileManager/accueil">Accueil</a></li>
+            <li class="breadcrumb-item"><a routerLink="/fileManager/modifStructure/{{this.service.structureId}}">Structure</a></li>
+            <li class="breadcrumb-item"><a routerLink="/fileManager/modifService/{{this.id}}">Service</a></li>
+            <li class="breadcrumb-item active">Utilisateur</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="alert alert-success alert-dismissible" *ngIf="this.sharedService.succes==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Succes!</h5>
+        {{this.sharedService.message.succes}}
+      </div>
+      <div class="alert alert-danger alert-dismissible" *ngIf="this.sharedService.error==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+       {{this.sharedService.message}}  
+      </div>
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+        <div class="col-lg-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulaire d'ajout d'un utilisateur à un service</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form #formValues="ngForm" (ngSubmit)="sendValues(formValues)">
+                <div class="card-body">
+                <div class="row">
+                 <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nom</label>
+                    <input type="text" class="form-control" required [(ngModel)]="this.user.name" name="name" required id="exampleInputEmail1" placeholder="Saisissez le nom de l'utilisateur">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Prénom</label>
+                      <input type="text" class="form-control" required [(ngModel)]="this.user.prenoms" name="prenoms" required id="exampleInputEmail1" placeholder="Saisissez le prenom de l'utilisateur">
+                    </div>
+                  </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Numéro</label>
+                        <input type="number" class="form-control" [(ngModel)]="this.user.telephone" name="telephone" required id="exampleInputEmail1" placeholder="Saisissez le numéro de l'utilisateur">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Type de l'utilisateur</label>
+                        <select class="form-control" required disabled name="type_user">
+                            <!-- <option disabled selected>Selectionnez le type de l'utilisateur</option> -->
+                            <option value="service">Service</option>
+                            <!-- <option value="Prestataire">Prestataire</option> -->
+                        </select>
+                    </div>
+                </div>
+                  
+                </div>
+                  
+                  <div class="form-check">
+                    <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-success" routerLink="/fileManager/modifStructure/{{this.id}}"><i class="fas fa-arrow-left"></i> retour</button>
+                  <button type="cancel" class="btn btn-danger"><i class="fas fa-times-circle"></i> annuler</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!formValues.form.valid"> <i class="fas fa-check-circle"></i> valider</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+      <!-- /.col -->
+    </div> 
+    </div>
+  </section>

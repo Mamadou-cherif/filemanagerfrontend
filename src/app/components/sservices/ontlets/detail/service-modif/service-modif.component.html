@@ -1,0 +1,67 @@
+<section class="content">
+    <div class="container-fluid">
+      
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+        <div class="col-lg-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulaire de modification d'un Service</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form #formValues="ngForm" (ngSubmit)="sendValues(formValues)">
+                <div class="card-body">
+                <div class="row">
+                 <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nom<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" required [(ngModel)]="this.service.name" name="name" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Personne Responsable<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" required [(ngModel)]="this.service.presonneResponsable" name="presonneResponsable" required>
+                    </div>
+                  </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Téléphone<span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" [(ngModel)]="this.service.telephone" name="telephone" required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="text" class="form-control" [(ngModel)]="this.service.email" name="email">
+                        
+                    </div>
+                </div>
+                  
+                </div>
+                  
+                  <div class="form-check">
+                    <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <ng-container *ngIf="this.identity.structureId == null && this.identity.serviceId != null">
+                    <button  class="btn btn-success" routerLink="/fileManager/accueilService"><i class="fas fa-arrow-left"></i> retour</button>
+                  </ng-container>
+                  <ng-container *ngIf="this.identity.structureId != null">
+                    <button  class="btn btn-success" routerLink="/fileManager/modifStructure/{{this.service.structureId}}"><i class="fas fa-arrow-left"></i> retour</button>
+                  </ng-container>
+                  <button type="cancel" class="btn btn-danger"><i class="fas fa-times-circle"></i> annuler</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!formValues.form.valid"> <i class="fas fa-check-circle"></i> valider</button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div> 
+    </div>
+  </section>

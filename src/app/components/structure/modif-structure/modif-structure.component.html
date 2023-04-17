@@ -1,0 +1,72 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Structure: {{this.structure.name}}</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <ng-container *ngIf="this.identity.structureId == null && this.identity.serviceId == null">
+              <li class="breadcrumb-item"><a routerLink="/fileManager/accueilAdmin">Acueil</a></li>
+              <li class="breadcrumb-item"><a routerLink="/fileManager/listeStructure">Structure</a></li>
+            </ng-container>
+            <ng-container *ngIf="this.identity.structureId != null">
+              <li class="breadcrumb-item"><a routerLink="/fileManager/accueil">Acueil</a></li>
+            </ng-container>
+            <li class="breadcrumb-item active">Detail</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="alert alert-success alert-dismissible" *ngIf="this.sharedService.succes==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Succes!</h5>
+        {{this.sharedService.message.succes}}
+      </div>
+      <div class="alert alert-danger alert-dismissible" *ngIf="this.sharedService.error==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+       {{this.sharedService.message}}  
+      </div>
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+      <div class="col-lg-12">
+        <div class="card card-primary card-outline card-tabs">
+          <div class="card-header p-0 pt-1 border-bottom-0">
+            <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#detailStructure" role="tab" aria-selected="true">Détails</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#structureService" role="tab" aria-selected="false">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#structureUser" role="tab" aria-selected="false">Utilisateurs</a>
+              </li>
+              
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="tab-content" id="custom-tabs-three-tabContent">
+              <div class="tab-pane fade show active" id="detailStructure">
+
+                <app-structure-modif></app-structure-modif>
+              </div>
+              <div class="tab-pane fade" id="structureService">
+                <app-liste-structure-service></app-liste-structure-service>
+              </div>
+              <div class="tab-pane fade" id="structureUser">
+                <app-liste-structure-user></app-liste-structure-user>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div> 
+      </div>
+      <!-- /.col -->
+    </div> 
+    </div>
+  </section>

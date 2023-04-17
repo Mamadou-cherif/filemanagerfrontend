@@ -1,0 +1,82 @@
+
+            
+            <!-- /.card-body -->
+       
+
+            <div class="content-header">
+                <div class="container-fluid">
+                  <div class="row mb-2">
+                    <div class="col-sm-6">
+                      <h1 class="m-0">Structure</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                      <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a routerLink="/fileManager/accueilAdmin">Acueil</a></li>
+                         <li class="breadcrumb-item active">Structure</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <section class="content">
+                <div class="container-fluid">
+                 <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+                 <div class="row">
+                  <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-success alert-dismissible" *ngIf="this.sharedService.succes==true">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h5><i class="icon fas fa-check"></i> Succes!</h5>
+                                {{this.sharedService.message.succes}}
+                            </div>
+                            <div class="alert alert-danger alert-dismissible" *ngIf="this.sharedService.error==true">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+                                {{this.sharedService.message}}  
+                            </div>
+                            <div class="card-header">
+                                <!-- <h3 class="card-title">DataTable with minimal features & hover style</h3> -->
+                                <a class="btn btn-primary float-end" title="Ajouter une Structure"
+                                    routerLink="/fileManager/ajoutStructure">
+                                    <i class="fa fa-fw fa-plus-circle"></i> Structure </a>
+                            </div>
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                <th>Structure</th>
+                                <th>Personne Responsable</th>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                                <th>Actions</th>
+                                
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr  *ngFor="let item of structure">
+                                <td>{{item.name}}</td>
+                                <td>{{item.presonneResponsable}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.telephone}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                    <button title="Supprimer cette structure"
+                                        class="btn btn-danger btn-sm delete" (click)="this.disableStructure(item._id)">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </button>
+                                    </div>
+                
+                                </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                
+                                </tfoot>
+                            </table>
+                            </div>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                </div> 
+                </div>
+              </section>

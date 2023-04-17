@@ -1,0 +1,116 @@
+<div class="wrapper">
+
+    <!-- Preloader -->
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="assets/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+  
+     -->
+  
+    <!-- Main Sidebar Container -->
+    <app-aside-left></app-aside-left>
+  
+    
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0" >La liste des utilisateurs</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a routerLink="/fileManager/accueilAdmin">Acueil</a></li>
+                <li class="breadcrumb-item active">Utilisateur</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="content">
+        <div class="container-fluid">
+         <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+         <div class="row">
+          <div class="col-12">
+            <div class="card">
+              
+              <!-- /.card-header -->
+
+              <div class="card-body">
+                <div class="alert alert-success alert-dismissible" *ngIf="this.sharedService.succes==true">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Succes!</h5>
+                  {{this.sharedService.message.succes}}
+                </div>
+                <div class="alert alert-danger alert-dismissible" *ngIf="this.sharedService.error==true">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+                 {{this.sharedService.message}}  
+                </div>
+                <div class="card-header">
+                  <!-- <h3 class="card-title">DataTable with minimal features & hover style</h3> -->
+                  <a class="btn btn-primary float-end" title="Ajouter un user"
+                      routerLink="/formUser">
+                      <i class="fa fa-fw fa-plus-circle"></i> Utilisateur</a>
+                </div>
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Prénoms</th>
+                    <th>Nom </th>
+                    <th>Téléphone</th>
+                    <th>Type d'utilisateur</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr  *ngFor="let item of user">
+                    <td>{{item.prenoms}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.telephone}}</td>
+                    <td>
+                      {{item.type_user}} 
+                      <ng-container *ngIf="item.structureId == null && item.serviceId">
+                        ({{item.serviceId.name}})
+                      </ng-container>
+                      <ng-container *ngIf="item.structureId != null && !item.serviceId">
+                        ({{item.structureId.name}})
+                      </ng-container>
+                    </td>
+                    <td>
+                      <div class="btn-group">
+                        <a type="button" class="btn btn-sm btn-primary mx-1"
+                          data-toggle="tooltip"
+                          title="Modifier cet utilisateur" routerLink="/modifUser/{{item._id}}">
+                          <i class="align-middle me-2 fas fa-fw fa-edit"></i>
+                        </a>
+                        <button title="Supprimer cet utilisateur"
+                          class="btn btn-danger btn-sm delete" (click)="this.deleteUser(item._id)">
+                          <i class="fas fa-fw fa-trash-alt"></i>
+                        </button>
+                      </div>
+
+                    </td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div> 
+        </div>
+      </section>
+    </div>
+    <app-footer ></app-footer >
+ </div>
+  

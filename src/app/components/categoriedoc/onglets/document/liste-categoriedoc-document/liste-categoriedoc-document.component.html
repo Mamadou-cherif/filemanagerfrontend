@@ -1,0 +1,69 @@
+            <!-- /.card-body -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+                    <div class="row">
+                    <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <!-- <h3 class="card-title">DataTable with minimal features & hover style</h3> -->
+                                <a class="btn btn-primary float-end" title="Ajouter document par catégorie"
+                                    routerLink="/fileManager/ajoutDocumentByCategorie/{{this.id}}">
+                                    <i class="fa fa-fw fa-plus-circle"></i> Document</a>
+                            </div>
+                          
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                <th>Référence</th>
+                                <th>Fichier</th>
+                                <th>debut</th>
+                                <th>Fin</th>
+                                <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of document">
+                                    <ng-container *ngIf="this.documentTempoArray.indexOf(item._id) == -1">
+                                    
+                                <td>{{item.reference}}</td>
+                                <td align="center">
+                                    <a href="{{this.url+'getfile/' + item.link}}" target="_blank" (click)="this.addAction(item._id)"><i class="fas fa-fw fa-book"></i></a>
+                                </td>
+                                <td>{{this.pipe.transform(item.debut, 'dd/MM/yyyy')}}</td>
+                                <td>{{this.pipe.transform(item.fin, 'dd/MM/yyyy')}}</td>
+                               
+                                <td>
+                                    <div class="btn-group">
+                                    <a type="button" class="btn btn-sm btn-primary mx-1"
+                                        data-toggle="tooltip"
+                                        title="Modifier ce document" (click)="routeTo(item._id)">
+                                        <i class="align-middle me-2 fas fa-fw fa-edit"></i>
+                                    </a>
+                                    <button title="Supprimer ce document"
+                                        class="btn btn-danger btn-sm delete mx-2" (click)="this.disableDocument(item._id)">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </button>
+
+                                    <button title="Archiver ce document" *ngIf="item.fin != ''"
+                                                class="btn btn-primary btn-sm delete" (click)="this.documentService.archiveDoc(item._id, this); ">
+                                                <i class="fas fa-fw fa-book"></i>
+                                    </button>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                
+                                </tfoot>
+                            </table>
+                            </div>
+                    </div>
+                    </div>
+                    <!-- /.col -->
+                </div> 
+                </div>
+                </section>

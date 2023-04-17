@@ -1,0 +1,89 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Structure</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/fileManager/accueilAdmin">Acueil</a></li>
+            <li class="breadcrumb-item"><a routerLink="/fileManager/listeStructure">Structure</a></li>
+            <li class="breadcrumb-item active">Ajout</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="alert alert-success alert-dismissible" *ngIf="this.sharedService.succes==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Succes!</h5>
+        {{this.sharedService.message.succes}}
+      </div>
+      <div class="alert alert-danger alert-dismissible" *ngIf="this.sharedService.error==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+       {{this.sharedService.message}}  
+      </div>
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+        <div class="col-lg-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulaire d'ajout d'une Structure</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form #formValues="ngForm" (ngSubmit)="sendValues(formValues)">
+                <div class="card-body">
+                <div class="row">
+                 <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nom<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" required [(ngModel)]="this.structure.name" name="name" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Personne Responsable<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" required [(ngModel)]="this.structure.presonneResponsable" name="presonneResponsable" required>
+                    </div>
+                  </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Téléphone<span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" [(ngModel)]="this.structure.telephone" name="telephone" required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="text" class="form-control" [(ngModel)]="this.structure.email" name="email">
+                        
+                    </div>
+                </div>
+                  
+                </div>
+                  
+                  <div class="form-check">
+                    <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-success" routerLink="/fileManager/accueil"><i class="fas fa-arrow-left"></i> Submit</button>
+                  <button type="cancel" class="btn btn-danger"><i class="fas fa-times-circle"></i> Submit</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!formValues.form.valid"> <i class="fas fa-check-circle"></i> Submit</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+      <!-- /.col -->
+    </div> 
+    </div>
+  </section>

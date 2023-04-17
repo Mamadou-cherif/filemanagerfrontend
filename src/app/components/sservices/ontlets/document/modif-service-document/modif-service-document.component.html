@@ -1,0 +1,101 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Document</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            
+            <li class="breadcrumb-item"><a routerLink="/fileManager/accueilSservice">Accueil</a></li>
+            <li class="breadcrumb-item"><a routerLink="/fileManager/modifService/{{this.document.serviceId}}">Service</a></li>
+            <li class="breadcrumb-item"><a routerLink="/fileManager/modifService/{{this.document.serviceId}}">Document</a></li>
+            <li class="breadcrumb-item active">Modification</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <!-- <div class="alert alert-success alert-dismissible" *ngIf="this.sharedService.succes==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Succes!</h5>
+        {{this.sharedService.message.succes}}
+      </div>
+      <div class="alert alert-danger alert-dismissible" *ngIf="this.sharedService.error==true">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-ban"></i> Erreur!</h5>
+       {{this.sharedService.message}}  
+      </div> -->
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+        <div class="col-lg-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulaire de modification d'un document d'un service</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form #formValues="ngForm" (ngSubmit)="sendValues(formValues)">
+                <div class="card-body">
+                <div class="row">
+                 <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Référence<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" required [(ngModel)]="this.document.reference" name="reference" required>
+                      </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">La catégorie du document<span class="text-danger">*</span></label>
+                        <select class="form-control" [(ngModel)]="this.document.categoriedocId"  name="categoriedocId">
+                            <option disabled>Selectionnez la catégorie du document</option>
+                            <option *ngFor="let item of categoriedoc" [value]="item._id">{{item.libelle}}</option>
+                          </select>
+                    </div>
+                  </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Début<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" [(ngModel)]="this.document.debut" name="debut" required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fin</label>
+                        <input type="date" class="form-control" [(ngModel)]="this.document.fin" (change)="this.compareDate(this.document.debut, this.document.fin)" name="fin">
+                        <span class="text-danger" *ngIf="this.isDisabled==true"> {{this.message}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fichier <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" [(ngModel)]="this.document.link" name="fichier" (change)="upload()"  id="image">
+                        
+                    </div>
+                </div>
+                  
+                </div>
+                  
+                  <div class="form-check">
+                    <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-success" routerLink="/fileManager/modifService/{{this.document.serviceId}}"><i class="fas fa-arrow-left"></i> Retour</button>
+                  <button type="cancel" class="btn btn-danger"><i class="fas fa-times-circle"></i> annuler</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!formValues.form.valid  || this.isDisabled==true"> <i class="fas fa-check-circle"></i> Valider</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+      <!-- /.col -->
+    </div> 
+    </div>
+  </section>

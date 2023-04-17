@@ -1,0 +1,84 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+        
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active">Acueil</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+      <div class="col-lg-12">
+                <div class="card card-widget widget-user">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-info">
+                        <h5 class="widget-user-desc">{{this.service?.name}}</h5>
+                        <!-- <h3 class="widget-user-username">Alexander Pierce</h3> -->
+                    </div>
+                    <div class="widget-user-image">
+                      <img class="img-circle elevation-2" src="assets/dist/img/user1-128x128.jpg" alt="User Avatar">
+                    </div>
+                    <div class="card-footer">
+                      <div class="row">
+                        <div class="col-sm-3 border-right">
+                          <div class="description-block">
+                            <h5 class="description-header">DETAIL</h5>
+                            <button class="btn btn-app bg-warning" routerLink="/fileManager/modifService/{{this.identity?.serviceId}}">
+                              <span class="badge bg-teal"></span>
+                              <i class="fas fa-inbox"></i> 
+                            </button>
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 border-right">
+                          <div class="description-block">
+                            <h5 class="description-header">DOCUMENTS</h5>
+                            <a class="btn btn-app" routerLink="/fileManager/rechercheDoc">
+                              <span class="badge bg-info">{{this.numberOfDoc}}</span>
+                              <i class="fas fa-book"></i> 
+                            </a>
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3">
+                          <div class="description-block">
+                            <h5 class="description-header">ARCHIVES</h5>
+                            <span class="description-text"></span>
+                            <a class="btn btn-app" routerLink="/fileManager/listeArchive/{{this.identity.serviceId}}">
+                              <span class="badge bg-info">{{this.numberOfArchive}}</span>
+                              <i class="fas fa-trash"></i> 
+                            </a>
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3">
+                          <div class="description-block">
+                            <h5 class="description-header">MES DOCUMENTS</h5>
+                            <span class="description-text"></span>
+                            <a class="btn btn-app" routerLink="/fileManager/myDocument">
+                              <!-- <span class="badge bg-info">f</span> -->
+                              <i class="fas fa-user"></i> 
+                            </a>
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                      </div>
+                      <!-- /.row -->
+                    </div>
+                  </div>
+      </div>
+      <!-- /.col -->
+    </div> 
+    </div>
+  </section>

@@ -1,0 +1,49 @@
+
+  <section class="content">
+    <div class="container-fluid">
+     
+     <!-- ici est le code variant dans le projet Merci de mettre là son code-->
+     <div class="row">
+        <div class="col-lg-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulaire d'une nouvelle catégorie de document</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form #formValues="ngForm" (ngSubmit)="sendValues(formValues)">
+                <div class="card-body">
+                <div class="row">
+                <div class="col-lg-4 center-lg">
+                    
+                </div>
+                <div class="col-lg-4 center-lg">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Catégorie du document<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" required [(ngModel)]="this.categoriedoc.libelle" name="libelle" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 center-lg">
+                    
+                </div>
+                  
+                </div>
+                  
+                  
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="button" class="btn btn-success" (click)="this.returnBack()"><i class="fas fa-arrow-left"></i> retour</button>
+                  <button type="cancel" class="btn btn-danger"><i class="fas fa-times-circle"></i> Annuler</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!formValues.form.valid"> <i class="fas fa-check-circle"></i> Valider</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+      <!-- /.col -->
+    </div> 
+    </div>
+  </section>
